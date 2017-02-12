@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <setting label="30002" id="device_name" type="text" default="output"/>
+  <setting label="30003" id="mixer_name" type="text" default=""/>
+  <setting label="30004" id="step_up" type="slider" default="4" range="1,1,50" option="percent"/>
+  <setting label="30005" id="step_down" type="slider" default="4" range="1,1,50" option="percent"/>
+  <setting label="30006" id="max_volume" type="slider" default="100" range="0,1,100" option="percent"/>
+  <setting label="30007" id="show_progress" type="bool" default="true"/>
+  <setting label="30008" id="progress_time" type="slider" default="1000" range="100,100,5000" option="int" visible="eq(-1,true)"/>
+  <setting label="30099" id="debug" type="bool" default="false" />
+</settings>
+

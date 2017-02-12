@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Global Settings -->
+    <string id="30001">System Volume Changer</string>
+    <string id="30002">Geräte-Name</string>
+    <string id="30003">Mixer-Name (Linux)</string>
+    <string id="30004">Schritt für Lautstärke +</string>
+    <string id="30005">Schritt für Lautstärke -</string>
+    <string id="30006">Maximale Lautstärke</string>
+    <string id="30007">Progress-Dialog anzeigen</string>
+    <string id="30008">Dauer der Progress-Anzeige in ms</string>
+    <string id="30099">Debug</string>
+
+    <string id="30101">Gerät auswählen</string>
+    <string id="30102">Keine ALSA-Geräte gefunden</string>
+    <string id="30103">Mixer auswählen</string>
+    <string id="30104">(Stumm)</string>
+
+</strings>

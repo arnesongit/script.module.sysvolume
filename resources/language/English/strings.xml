@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Global Settings -->
+    <string id="30001">System Volume Changer</string>
+    <string id="30002">Device Name</string>
+    <string id="30003">Mixer Name</string>
+    <string id="30004">Step for Volume Up</string>
+    <string id="30005">Step for Volume Down</string>
+    <string id="30006">Highest Volume Limit</string>
+    <string id="30007">Show Progress Dialog</string>
+    <string id="30008">Duration of Progress Dialog in ms</string>
+    <string id="30099">Debug</string>
+
+    <string id="30101">Select Device</string>
+    <string id="30102">No ALSA Devices found</string>
+    <string id="30103">Select Mixer</string>
+    <string id="30104">(Muted)</string>
+
+</strings>
