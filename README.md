@@ -22,23 +22,23 @@ In the Addon Settings you can
 - Endble/Disable the Progress Dialog which shows the Volume Level after changing it
 
 The volume can be changed with following script functions:
-
+```
 RunScript(script.change.sysvolume,up)
 RunScript(script.change.sysvolume,down)
 RunScript(script.change.sysvolume,muteToggle)
-
+```
 You you can also use the folowing funtions to change the volume or the mute status:
-
+```
 RunScript(script.change.sysvolume,change,10)        to increase the volume by 10%
 RunScript(script.change.sysvolume,change,-10)       to decrease the volume by 10%
 RunScript(script.change.sysvolume,set,45)           to set the volume to 45%
 RunScript(script.change.sysvolume,mute,true)        to mute the volume
 RunScript(script.change.sysvolume,mute,false)       to unmute the volume
-
+```
 Modify the keyboard.xml to change the volume with keyboard shortcuts.
 
 Example:
-
+```
 <keymap>
   <global>
     <keyboard>
@@ -50,3 +50,4 @@ Example:
     </keyboard>
   </global>
 </keymap>
+```
