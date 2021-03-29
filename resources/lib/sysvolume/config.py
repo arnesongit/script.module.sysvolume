@@ -22,7 +22,7 @@ from kodi_six import xbmcaddon
 
 
 class CONST(object):
-    addon_id = 'script.change.sysvolume'
+    addon_id = 'script.module.sysvolume'
 
 
 class Config(object):
