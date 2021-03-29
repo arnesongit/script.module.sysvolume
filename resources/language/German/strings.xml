@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
     <!-- Global Settings -->
+    <string id="30000">Einstellungen</string>
     <string id="30001">System Volume Changer</string>
     <string id="30002">Geräte-Name</string>
     <string id="30003">Mixer-Name (Linux)</string>

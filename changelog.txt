@@ -1,2 +1,5 @@
+v0.2.0 (2021-03-29)
+- Kodi 19 compatibility
+
 v0.1.0 (2017-02-12)
 - Initial Release.

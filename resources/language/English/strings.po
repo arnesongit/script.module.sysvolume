@@ -1,0 +1,92 @@
+# XBMC Media Center language file
+# Addon Name: System Volume Changer
+# Addon id: script.change.sysvolume
+# Addon version: 0.2.0
+# Addon Provider: arneson
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2021-03-28 13:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "Addon Summary"
+msgid "Script Routines to change the System Volume on Linux/macOS"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "Use RunScript(script.module.sysvolume/up) or RunScript(script.module.sysvolume/down) to change System Volume."
+msgstr ""
+
+msgctxt "Addon Disclaimer"
+msgid "Requires ALSA sound driver on Linux"
+msgstr ""
+
+#Global Settings
+
+msgctxt "#30000"
+msgid "Settings"
+msgstr ""
+
+msgctxt "#30001"
+msgid "System Volume Changer"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Device Name"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Mixer Name"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Step for Volume Up"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Step for Volume Down"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Highest Volume Limit"
+msgstr ""
+
+msgctxt "#30007"
+msgid "Show Progress Dialog"
+msgstr ""
+
+msgctxt "#30008"
+msgid "Duration of Progress Dialog in ms"
+msgstr ""
+
+#empty strings from id 30009 to 30098
+
+msgctxt "#30099"
+msgid "Debug"
+msgstr ""
+
+#empty string with id 30100
+
+msgctxt "#30101"
+msgid "Select Device"
+msgstr ""
+
+msgctxt "#30102"
+msgid "No ALSA Devices found"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Select Mixer"
+msgstr ""
+
+msgctxt "#30104"
+msgid "(Muted)"
+msgstr ""

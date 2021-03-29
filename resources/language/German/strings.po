@@ -1,0 +1,86 @@
+# XBMC Media Center language file
+# Addon Name: System Volume Changer
+# Addon id: script.change.sysvolume
+# Addon version: 0.2.0
+# Addon Provider: arneson
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2021-03-28 13:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "Addon Summary"
+msgid "Script Routines to change the System Volume on Linux/macOS"
+msgstr "Script-Routinen zum Ändern der Systemlautstärke unter Linux/macOS"
+
+msgctxt "Addon Description"
+msgid "Use RunScript(script.module.sysvolume/up) or RunScript(script.module.sysvolume/down) to change System Volume."
+msgstr "Benutze RunScript(script.module.sysvolume/up) oder RunScript(script.module.sysvolume/down) um die Lautstärke zu ändern."
+
+msgctxt "Addon Disclaimer"
+msgid "Requires ALSA sound driver on Linux"
+msgstr "Verwendet den ALSA-Treiber unter Linux"
+
+msgctxt "#30000"
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgctxt "#30001"
+msgid "System Volume Changer"
+msgstr "System Volume Changer"
+
+msgctxt "#30002"
+msgid "Device Name"
+msgstr "Geräte-Name"
+
+msgctxt "#30003"
+msgid "Mixer Name"
+msgstr "Mixer-Name (Linux)"
+
+msgctxt "#30004"
+msgid "Step for Volume Up"
+msgstr "Schritt für Lautstärke +"
+
+msgctxt "#30005"
+msgid "Step for Volume Down"
+msgstr "Schritt für Lautstärke -"
+
+msgctxt "#30006"
+msgid "Highest Volume Limit"
+msgstr "Maximale Lautstärke"
+
+msgctxt "#30007"
+msgid "Show Progress Dialog"
+msgstr "Progress-Dialog anzeigen"
+
+msgctxt "#30008"
+msgid "Duration of Progress Dialog in ms"
+msgstr "Dauer der Progress-Anzeige in ms"
+
+msgctxt "#30099"
+msgid "Debug"
+msgstr "Debug"
+
+msgctxt "#30101"
+msgid "Select Device"
+msgstr "Gerät auswählen"
+
+msgctxt "#30102"
+msgid "No ALSA Devices found"
+msgstr "Keine ALSA-Geräte gefunden"
+
+msgctxt "#30103"
+msgid "Select Mixer"
+msgstr "Mixer auswählen"
+
+msgctxt "#30104"
+msgid "(Muted)"
+msgstr "(Stumm)"

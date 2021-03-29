@@ -15,19 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import sys, os, logging
-import xbmc
-
-try:
-    from unidecode import unidecode
-except:
-    def unidecode(txt): 
-        try:
-            return txt.decode('utf-8', 'ignore')
-        except:
-            return txt
+from kodi_six import xbmc
 
 #------------------------------------------------------------------------------
 # Global Definitions
@@ -36,40 +27,47 @@ except:
 DEBUG_ENABLED = True
 DEBUG_SERVER = 'localhost'
 ADDON_NAME = 'DEBUG'
-LOG_DETAILS = 1
 
 try:
-    from config import settings
+    from .config import settings
     DEBUG_ENABLED = settings.debug
-    LOG_DETAILS = 2 if DEBUG_ENABLED else 0
     ADDON_NAME = settings.addon_name
 except:
     pass
+
+try:
+    # LOGNOTICE not available in Kodi 19
+    LOGNOTICE = xbmc.LOGNOTICE
+except:
+    LOGNOTICE = xbmc.LOGINFO
 
 #------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------
 
-def log(txt = '', level=xbmc.LOGDEBUG):
+def logInfo(txt=''):
+    xbmcLog(txt, level=LOGNOTICE)
+
+def logDebug(txt=''):
+    xbmcLog(txt, level=xbmc.LOGDEBUG)
+
+def logWarning(txt=''):
+    xbmcLog(txt, level=xbmc.LOGWARNING)
+
+def logError(txt=''):
+    xbmcLog(txt, level=xbmc.LOGERROR)
+
+def xbmcLog(txt = '', level=xbmc.LOGINFO):
     ''' Log a text into the Kodi-Logfile '''
     try:
-        if LOG_DETAILS > 0:
-            if LOG_DETAILS == 2 and level == xbmc.LOGDEBUG:
-                # More Logging
-                level = xbmc.LOGNOTICE
-            if LOG_DETAILS == 3 and (level == xbmc.LOGDEBUG or level == xbmc.LOGSEVERE):
-                # Complex Logging
-                level = xbmc.LOGNOTICE
-            if level != xbmc.LOGSEVERE:
-                if isinstance(txt, unicode):
-                    txt = unidecode(txt)
-                xbmc.log(b"[%s] %s" % (ADDON_NAME, txt), level) 
+        if DEBUG_ENABLED or level != LOGNOTICE:
+            xbmc.log("[%s] %s" % (ADDON_NAME, txt), level)
     except:
-        xbmc.log(b"[%s] Unicode Error in message text" % ADDON_NAME, xbmc.LOGERROR)
+        xbmc.log("[%s] Logging Error" % ADDON_NAME, xbmc.LOGERROR)
 
 def logException(e, txt='', level=xbmc.LOGERROR):
     if txt:
-        log(txt + '\n' + str(e), level)
+        xbmcLog(txt + '\n' + str(e), level)
     logging.exception(str(e))
 
 def updatePath():

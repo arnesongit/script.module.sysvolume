@@ -15,15 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import sys
 import re
 import traceback
 import subprocess
-import xbmc
-import debug
-import config
+from kodi_six import py2_encode
+from . import debug
+from . import config
 
 
 class Mixer(object):
@@ -39,13 +39,13 @@ class Mixer(object):
 
     @staticmethod
     def _execute(execPath):
-        process = subprocess.Popen(execPath.encode('utf-8'), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+        process = subprocess.Popen(py2_encode(execPath), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
         stdout_value, stderr_value = process.communicate()
-        stdout_value = stdout_value.decode('utf-8')
-        stderr_value = stderr_value.decode('utf-8')
+        stdout_value = stdout_value.decode()
+        stderr_value = stderr_value.decode()
         retCode = process.returncode
         if len(stderr_value) > 2:
-            debug.log(stderr_value, level=xbmc.LOGERROR)
+            debug.logError(stderr_value)
         return stdout_value
 
     @staticmethod
@@ -75,34 +75,34 @@ class Mixer(object):
         self.muted = True if config.getSetting('last_muted') == 'true' else False
 
     def getVolume(self):
-        debug.log('getVolume: %s' % self.volume)
+        debug.logInfo('getVolume: %s' % self.volume)
         return self.volume
 
     def setVolume(self, volume, ignoreLimits=False):
         self.volume = volume if ignoreLimits else min(self.max_volume, volume)
-        debug.log('setVolume: %s' % self.volume)
+        debug.logInfo('setVolume: %s' % self.volume)
         return self.volume
 
     def changeVolume(self, step, ignoreLimits=False):
-        debug.log('changeVolume: %s' % step)
+        debug.logInfo('changeVolume: %s' % step)
         return self.setVolume(self.getVolume() + step, ignoreLimits)
 
     def volumeUp(self, step=0):
-        stepVal = abs(step if step <> 0 else self.step_up)
-        debug.log('volumeUp: %s' % stepVal)
+        stepVal = abs(step if step != 0 else self.step_up)
+        debug.logInfo('volumeUp: %s' % stepVal)
         return self.changeVolume(stepVal)
 
     def volumeDown(self, step=0):
-        stepVal = 0 - abs(step if step <> 0 else self.step_down)
-        debug.log('volumeDown: %s' % stepVal)
+        stepVal = 0 - abs(step if step != 0 else self.step_down)
+        debug.logInfo('volumeDown: %s' % stepVal)
         return self.changeVolume(stepVal)
 
     def isMuted(self):
-        debug.log('isMuted: %s' % self.muted)
+        debug.logInfo('isMuted: %s' % self.muted)
         return self.muted
 
     def setMute(self, mute):
-        debug.log('setMute: %s' % mute)
+        debug.logInfo('setMute: %s' % mute)
         self.muted = mute
         return self.muted
 
@@ -137,7 +137,7 @@ class MacOsMixer(Mixer):
             self.volume = int('0%s' % retval)
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logError(str(e))
             traceback.print_exc()
         return Mixer.getVolume(self)
 
@@ -149,10 +149,10 @@ class MacOsMixer(Mixer):
                     ]
             retval = self._execute(self.OSASCRIPT % '\n'.join(cmds))
             self.volume = int('0%s' % retval)
-            debug.log('setVolume: %s' % self.volume)
+            debug.logInfo('setVolume: %s' % self.volume)
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
         return Mixer.getVolume(self)
 
@@ -166,11 +166,11 @@ class MacOsMixer(Mixer):
                     ]
             retval = self._execute(self.OSASCRIPT % '\n'.join(cmds))
             self.volume = int('0%s' % retval)
-            debug.log('changeVolume: %s (%s)' % (self.volume, step))
+            debug.logInfo('changeVolume: %s (%s)' % (self.volume, step))
             self.muted = False
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
         return Mixer.getVolume(self)
 
@@ -180,9 +180,9 @@ class MacOsMixer(Mixer):
             self.muted = retval.lower().find('true') >= 0
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('isMuted: %s' % self.muted)
+        debug.logInfo('isMuted: %s' % self.muted)
         return self.muted
 
     def setMute(self, mute):
@@ -194,9 +194,9 @@ class MacOsMixer(Mixer):
             self.muted = True if retval.lower().find('true') >= 0 else False
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('setMute: %s' % self.muted)
+        debug.logInfo('setMute: %s' % self.muted)
         return self.muted
 
     def muteToggle(self):
@@ -208,9 +208,9 @@ class MacOsMixer(Mixer):
             self.muted = retval.lower().find('true') >= 0
             self._save_state()
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('muteToggle: %s' % self.muted)
+        debug.logInfo('muteToggle: %s' % self.muted)
         return self.muted
 
 
@@ -246,7 +246,7 @@ class LinuxAlsaMixer(Mixer):
                     except:
                         pass
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
         return devices
 
@@ -270,7 +270,7 @@ class LinuxAlsaMixer(Mixer):
                         ok = True
                         break
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
         return ok
 
@@ -279,7 +279,7 @@ class LinuxAlsaMixer(Mixer):
             retval = self._execute(self.MIXER_GET.format(device=self.device_name, mixer=self.mixer_name))
             self._parse_result(retval)
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
         return Mixer.getVolume(self)
 
@@ -289,9 +289,9 @@ class LinuxAlsaMixer(Mixer):
             retval = self._execute(self.MIXER_SET.format(device=self.device_name, mixer=self.mixer_name, value='%s%%' % self.volume))
             self._parse_result(retval)
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('setVolume: %s' % self.volume)
+        debug.logInfo('setVolume: %s' % self.volume)
         return self.volume
 
     def changeVolume(self, step, ignoreLimits=False):
@@ -303,14 +303,14 @@ class LinuxAlsaMixer(Mixer):
             retval = self._execute(self.MIXER_SET.format(device=self.device_name, mixer=self.mixer_name, value='%s%%%s' % (uStep, sign)))
             self._parse_result(retval)
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('changeVolume: %s (%s)' % (self.volume, step))
+        debug.logInfo('changeVolume: %s (%s)' % (self.volume, step))
         return self.volume
 
     def isMuted(self):
         self.getVolume()
-        debug.log('isMuted: %s' % self.muted)
+        debug.logInfo('isMuted: %s' % self.muted)
         return self.muted
 
     def setMute(self, mute):
@@ -318,9 +318,9 @@ class LinuxAlsaMixer(Mixer):
             retval = self._execute(self.MIXER_SET.format(device=self.device_name, mixer=self.mixer_name, value='off' if mute else 'on'))
             self._parse_result(retval)
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('muteToggle: %s' % self.muted)
+        debug.logInfo('muteToggle: %s' % self.muted)
         return self.muted
 
     def muteToggle(self):
@@ -328,7 +328,7 @@ class LinuxAlsaMixer(Mixer):
             retval = self._execute(self.MIXER_SET.format(device=self.device_name, mixer=self.mixer_name, value='toggle'))
             self._parse_result(retval)
         except Exception as e:
-            debug.log(str(e), level=xbmc.LOGERROR)
+            debug.logException(e)
             traceback.print_exc()
-        debug.log('muteToggle: %s' % self.muted)
+        debug.logInfo('muteToggle: %s' % self.muted)
         return self.muted

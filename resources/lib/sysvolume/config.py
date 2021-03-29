@@ -15,10 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import os
-import xbmcaddon
+from kodi_six import xbmcaddon
 
 
 class CONST(object):
@@ -34,12 +34,12 @@ class Config(object):
         # Addon Info
         self.addon_id = addon.getAddonInfo('id')
         self.addon_name = addon.getAddonInfo('name')
-        self.addon_path = addon.getAddonInfo('path').decode('utf-8')
+        self.addon_path = addon.getAddonInfo('path')
         self.addon_base_url = 'plugin://' + self.addon_id
-        self.addon_icon = os.path.join(self.addon_path, 'icon.png').decode('utf-8')
+        self.addon_icon = os.path.join(self.addon_path, 'icon.png')
         # Settings
-        self.device_name = addon.getSetting('device_name').decode('utf-8')
-        self.mixer_name = addon.getSetting('mixer_name').decode('utf-8')
+        self.device_name = addon.getSetting('device_name')
+        self.mixer_name = addon.getSetting('mixer_name')
         self.step_up = int('0%s' % addon.getSetting('step_up'))
         self.step_down = int('0%s' % addon.getSetting('step_down'))
         self.max_volume = int('0%s' % addon.getSetting('max_volume'))
