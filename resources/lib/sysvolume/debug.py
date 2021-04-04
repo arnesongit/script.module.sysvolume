@@ -46,10 +46,12 @@ except:
 #------------------------------------------------------------------------------
 
 def logInfo(txt=''):
-    xbmcLog(txt, level=LOGNOTICE)
+    if DEBUG_ENABLED:
+        xbmcLog(txt, level=LOGNOTICE)
 
 def logDebug(txt=''):
-    xbmcLog(txt, level=xbmc.LOGDEBUG)
+    if DEBUG_ENABLED:
+        xbmcLog(txt, level=xbmc.LOGDEBUG)
 
 def logWarning(txt=''):
     xbmcLog(txt, level=xbmc.LOGWARNING)
@@ -60,8 +62,7 @@ def logError(txt=''):
 def xbmcLog(txt = '', level=xbmc.LOGINFO):
     ''' Log a text into the Kodi-Logfile '''
     try:
-        if DEBUG_ENABLED or level != LOGNOTICE:
-            xbmc.log("[%s] %s" % (ADDON_NAME, txt), level)
+        xbmc.log("[%s] %s" % (ADDON_NAME, txt), level)
     except:
         xbmc.log("[%s] Logging Error" % ADDON_NAME, xbmc.LOGERROR)
 

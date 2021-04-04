@@ -109,5 +109,5 @@ if __name__ == '__main__':
             select_device()
             pass
     except Exception as e:
-        debug.log(str(e), level=xbmc.LOGERROR)
+        debug.logException(e)
         traceback.print_exc()

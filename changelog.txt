@@ -1,4 +1,4 @@
-v0.2.0 (2021-03-29)
+v0.2.0 (2021-04-05)
 - Kodi 19 compatibility
 - Renamed to script.module.sysvolume
 
