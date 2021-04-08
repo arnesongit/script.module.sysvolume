@@ -4,13 +4,22 @@ This Kodi module contains callable scripts to change the system volume on Linux/
 
 See [changelog.txt](https://github.com/arnesongit/script.module.sysvolume/blob/master/changelog.txt) for informations.
 
-## Installation
+## Manual Installation
 
-1. Download the zip file [from this folder](https://github.com/arnesongit/repo/tree/master/script.module.sysvolume) from github
-2. Use "Install from Zip" Method to install the addon (this works only for Kodi 19 and later).
-   Or you install the Addon from my Repository addon [for Kodi 19](https://github.com/arnesongit/repository.arneson/raw/main/repository.tidal2/repository.arneson-0.2.0.zip)
-   or [for Kodi until Leia](https://github.com/arnesongit/repository.arneson/raw/until-leia/repository.tidal2/repository.arneson-0.2.0.zip).
+1. Download the zip file from the repository folder [for Kodi 19](https://github.com/arnesongit/repository.tidal2/tree/main/script.module.sysvolume)
+   or [for Kodi 17 and 18](https://github.com/arnesongit/repository.tidal2/tree/until-leia/script.module.sysvolume).
+2. Use "Install from Zip" Method to install the addon. You have to allow third party addon installation in the Kodi settings !
 3. The addon appears as a "Program Addon".
+
+## Installation with TIDAL2 Repository
+
+With this method you will get updates automatically.
+
+1. Download the Repository zip file [for Kodi 19](https://github.com/arnesongit/repository.tidal2/blob/main/repository.tidal2/repository.tidal2-0.2.0.zip?raw=true)
+   or [for Kodi 17 and 18](https://github.com/arnesongit/repository.tidal2/blob/until-leia/repository.tidal2/repository.tidal2-0.2.0.zip?raw=true).
+2. Use "Install from Zip" Method to install the repository. You have to allow third party addon installation in the Kodi settings !
+3. Install the sysvolume addon from this repository.
+4. The addon appears as a "Program Addon".
 
 ## Using the Addon functions
 
