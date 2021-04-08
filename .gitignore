@@ -52,6 +52,3 @@ Thumbs.db
 .settings
 .externalTool*
 *.prefs
-
-# Kodi-18 Files
-addon18.xml

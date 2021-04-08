@@ -7,9 +7,10 @@ See [changelog.txt](https://github.com/arnesongit/script.module.sysvolume/blob/m
 ## Installation
 
 1. Download the zip file [from this folder](https://github.com/arnesongit/repo/tree/master/script.module.sysvolume) from github
-2. Use "Install from Zip" Method to install the addon.
-   Or you install the Addon from my (Repository)[https://github.com/arnesongit/repository.arneson/raw/master/repository.arneson/repository.arneson-0.1.2.zip].
-3. The Addon appears in Programs,
+2. Use "Install from Zip" Method to install the addon (this works only for Kodi 19 and later).
+   Or you install the Addon from my Repository addon [for Kodi 19](https://github.com/arnesongit/repository.arneson/raw/main/repository.tidal2/repository.arneson-0.2.0.zip)
+   or [for Kodi until Leia](https://github.com/arnesongit/repository.arneson/raw/until-leia/repository.tidal2/repository.arneson-0.2.0.zip).
+3. The addon appears as a "Program Addon".
 
 ## Using the Addon functions
 
