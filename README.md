@@ -16,7 +16,7 @@ See [changelog.txt](https://github.com/arnesongit/script.module.sysvolume/blob/m
 With this method you will get updates automatically.
 
 1. Download the Repository zip file [for Kodi 19](https://github.com/arnesongit/repository.tidal2/blob/main/repository.tidal2/repository.tidal2-0.2.0.zip?raw=true)
-   or [for Kodi 17 and 18](https://github.com/arnesongit/repository.tidal2/blob/until-leia/repository.tidal2/repository.tidal2-0.2.0.zip?raw=true).
+   or [for Kodi 17 and 18](https://github.com/arnesongit/repository.tidal2/blob/until-leia/repository.tidal2/repository.tidal2-0.1.0.zip?raw=true).
 2. Use "Install from Zip" Method to install the repository. You have to allow third party addon installation in the Kodi settings !
 3. Install the sysvolume addon from this repository.
 4. The addon appears as a "Program Addon".
