@@ -56,16 +56,21 @@ def show_progress(mixer):
         dia.close()
 
 def select_device():
+    debug.logInfo('Selecting mixer device')
     devices = Mixer.getDevices()
-    devkeys = devices.keys()
+    devkeys = list(devices.keys())
     devlist = []
     for key in devkeys:
-        devlist.append('[%s] %s' % (key, devices[key]['name']))
+        deviceName = '[%s] %s' % (key, devices[key]['name'])
+        debug.logInfo('Found device: %s' % deviceName)
+        devlist.append(deviceName)
+        for mixer in devices[key]['mixer']:
+            debug.logInfo('Found mixer: %s' % mixer)
     if len(devlist) == 0:
         xbmcgui.Dialog().ok(_T(30101), _T(30102))
     else:
         device = xbmcgui.Dialog().select(_T(30101), devlist)
-        if devices >= 0:
+        if device >= 0:
             mixers = devices[devkeys[device]]['mixer']
             if len(mixers) > 0:
                 mixer = xbmcgui.Dialog().select(_T(30103), mixers)
@@ -74,6 +79,7 @@ def select_device():
                 mixer_name = ''
             config.setSetting('device_name', devkeys[device].encode('utf-8'))
             config.setSetting('mixer_name', mixer_name.encode('utf-8'))
+            debug.logInfo("Selected device '%s' with mixer '%s'" % (devkeys[device], mixer_name))
 
 #------------------------------------------------------------------------------
 # MAIN
